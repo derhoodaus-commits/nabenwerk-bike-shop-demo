@@ -1,0 +1,128 @@
+<!--meta {
+  "title": "Book a Bike Service Online | Nabenwerk Radservice",
+  "description": "Book a tune-up, repair or e-bike service online. Pick a drop-off time and get your confirmation by email right away.",
+  "nav": "booking",
+  "priority": 0.9,
+  "scripts": ["forms.js"],
+  "bodyClass": "page-booking"
+} -->
+<section class="page-hero compact">
+  <div class="wrap">
+    <p class="kicker">Booking</p>
+    <h1>Book a service appointment</h1>
+    <p class="lead">Choose the service, day and drop-off time. We confirm the fixed price when you drop off, before we start.</p>
+  </div>
+</section>
+
+<section class="section booking-section" aria-label="Booking form">
+  <div class="wrap booking-grid">
+    <form id="booking-form" class="form form-card" action="api/booking" method="post" novalidate>
+      <div class="error-summary" tabindex="-1" role="alert" hidden>
+        <p>Please check the following:</p>
+        <ul></ul>
+      </div>
+
+      <fieldset>
+        <legend><span class="legend-num" aria-hidden="true">1</span> What needs doing?</legend>
+        <div class="field">
+          <label for="service">Service</label>
+          <select id="service" name="service" required aria-describedby="service-error">
+            <option value="">Choose a service</option>
+            <option value="inspection-basic">Basic tune-up (€59)</option>
+            <option value="inspection-full">Full tune-up (€99)</option>
+            <option value="repair">Repair (please describe)</option>
+            <option value="ebike">E-bike service (from €89)</option>
+            <option value="cargo-bike">Cargo bike service (from €129)</option>
+            <option value="estimate">Estimate (€15, credited toward the work)</option>
+          </select>
+          <p class="field-error" id="service-error" data-error-for="service"></p>
+        </div>
+        <div class="field" role="radiogroup" aria-labelledby="biketype-label" aria-describedby="bikeType-error">
+          <p class="label" id="biketype-label">Bike type</p>
+          <div class="choice-grid">
+            <label class="choice"><input type="radio" name="bikeType" id="bt-city" value="city"> <span>City or hybrid bike</span></label>
+            <label class="choice"><input type="radio" name="bikeType" id="bt-road" value="road"> <span>Road or gravel bike</span></label>
+            <label class="choice"><input type="radio" name="bikeType" id="bt-mtb" value="mtb"> <span>Mountain bike</span></label>
+            <label class="choice"><input type="radio" name="bikeType" id="bt-ebike" value="ebike"> <span>E-bike</span></label>
+            <label class="choice"><input type="radio" name="bikeType" id="bt-cargo" value="cargo"> <span>Cargo bike</span></label>
+          </div>
+          <p class="field-error" id="bikeType-error" data-error-for="bikeType"></p>
+        </div>
+        <div class="field">
+          <label for="description">Description <span id="description-required" class="required-note" hidden>(required for repairs and estimates)</span></label>
+          <textarea id="description" name="description" rows="4" maxlength="1000" aria-describedby="description-help description-error"></textarea>
+          <p class="field-help" id="description-help">For example: “Rear brake rubs, chain skips in third gear.”</p>
+          <p class="field-error" id="description-error" data-error-for="description"></p>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend><span class="legend-num" aria-hidden="true">2</span> When will you drop it off?</legend>
+        <div class="field-row">
+          <div class="field">
+            <label for="date">Date</label>
+            <input id="date" name="date" type="date" required aria-describedby="date-hint date-error">
+            <p class="field-help" id="date-hint">Mon–Fri 9 am–4:30 pm, Sat 10 am–1 pm. Closed Sundays and public holidays.</p>
+            <p class="field-error" id="date-error" data-error-for="date"></p>
+          </div>
+          <div class="field">
+            <label for="time">Drop-off time</label>
+            <select id="time" name="time" required aria-describedby="time-error">
+              <option value="">Pick a date first</option>
+              <option value="09:00">9:00 am</option><option value="09:30">9:30 am</option><option value="10:00">10:00 am</option><option value="10:30">10:30 am</option>
+              <option value="11:00">11:00 am</option><option value="11:30">11:30 am</option><option value="12:00">12:00 pm</option><option value="12:30">12:30 pm</option>
+              <option value="13:00">1:00 pm</option><option value="13:30">1:30 pm</option><option value="14:00">2:00 pm</option><option value="14:30">2:30 pm</option>
+              <option value="15:00">3:00 pm</option><option value="15:30">3:30 pm</option><option value="16:00">4:00 pm</option><option value="16:30">4:30 pm</option>
+            </select>
+            <p class="field-error" id="time-error" data-error-for="time"></p>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend><span class="legend-num" aria-hidden="true">3</span> How can we reach you?</legend>
+        <div class="field">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" autocomplete="name" required aria-describedby="name-error">
+          <p class="field-error" id="name-error" data-error-for="name"></p>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="email-error">
+            <p class="field-error" id="email-error" data-error-for="email"></p>
+          </div>
+          <div class="field">
+            <label for="phone">Mobile number <span class="optional">(optional, so we can text you when it’s ready)</span></label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" aria-describedby="phone-error">
+            <p class="field-error" id="phone-error" data-error-for="phone"></p>
+          </div>
+        </div>
+        <div class="field hp" aria-hidden="true">
+          <label for="website">Website (leave blank)</label>
+          <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+        </div>
+        <div class="field checkbox">
+          <input id="privacy" name="privacy" type="checkbox" required aria-describedby="privacy-error">
+          <label for="privacy">I have read the <a href="privacy.html">privacy policy</a>. My details will only be used for this appointment.</label>
+          <p class="field-error" id="privacy-error" data-error-for="privacy"></p>
+        </div>
+      </fieldset>
+
+      <!--static--><p class="demo-note" id="booking-demo-note"><strong>Demo:</strong> this form only checks your entries in your browser. Nothing is sent or stored, and no appointment is made.</p>
+      <noscript><p class="demo-note">This demo form needs JavaScript. It never sends any data.</p></noscript><!--/static-->
+      <button class="btn btn-primary btn-lg btn-block" type="submit">Request appointment</button>
+      <p class="form-status" role="status" aria-live="polite"></p>
+    </form>
+
+    <aside class="booking-aside" aria-labelledby="aside-title">
+      <h2 id="aside-title" class="aside-title">Good to know</h2>
+      <ul class="aside-list">
+        <li><strong>Fixed price first.</strong> We don’t start until you’ve approved the price.</li>
+        <li><strong>Free cancellation</strong> until the day before. Just reply to your confirmation email.</li>
+        <li><strong>E-bike?</strong> Please bring the battery, fully charged.</li>
+      </ul>
+      <p class="aside-contact">Prefer to call? <a href="tel:+493023125417">030 23125 417</a></p>
+    </aside>
+  </div>
+</section>

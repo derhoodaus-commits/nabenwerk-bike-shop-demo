@@ -1,0 +1,49 @@
+<!--meta {
+  "title": "Booking Received | Nabenwerk Radservice",
+  "description": "Your booking request at Nabenwerk Radservice has been received.",
+  "noindex": true,
+  "scripts": ["confirm.js"]
+} -->
+<section class="page-hero compact">
+  <div class="wrap narrow">
+    <div id="booking-found">
+      <p class="kicker">Booking</p>
+      <h1>Thanks, you’re booked in</h1>
+      <p class="lead">Your booking number: <strong class="ref" id="booking-ref">–</strong></p>
+      <!--server--><p>A confirmation with all the details is on its way to your inbox. Keep your booking number handy in case you need to reschedule.</p><!--/server-->
+      <!--static--><div class="demo-note" id="demo-notice">
+        <p><strong>Demo project: nothing was sent.</strong> This is a portfolio demo of a fictional shop. No booking was created, no email will arrive, and the booking number is made up.</p>
+        <p>Your entries never left your browser. They are kept only in this tab’s session storage to show the summary below and disappear when you close the tab.</p>
+      </div><!--/static-->
+
+      <div id="booking-summary" class="summary-card" hidden>
+        <h2 class="section-title small">Your details</h2>
+        <dl class="info-list">
+          <div><dt>Service</dt><dd data-summary="service"></dd></div>
+          <div><dt>Bike</dt><dd data-summary="bikeType"></dd></div>
+          <div><dt>Drop-off</dt><dd data-summary="when"></dd></div>
+          <div><dt>Name</dt><dd data-summary="name"></dd></div>
+          <div><dt>Email</dt><dd data-summary="email"></dd></div>
+        </dl>
+      </div>
+
+      <h2 class="section-title small">What happens next</h2>
+      <ol class="next-steps">
+        <li>Bring your bike to Weserstraße at your chosen time. The entrance is through the courtyard.</li>
+        <li>We look it over together and give you a fixed price.</li>
+        <li>As soon as your bike is ready, we’ll let you know.</li>
+      </ol>
+      <div class="actions">
+        <a class="btn btn-primary" href="index.html">Back to home</a>
+        <a class="btn btn-secondary" href="faq.html">FAQ</a>
+      </div>
+    </div>
+
+    <div id="booking-missing" hidden>
+      <p class="kicker">Booking</p>
+      <h2 class="section-title">No booking found</h2>
+      <p>This page shows the confirmation after an online booking, but no valid booking number was provided.</p>
+      <a class="btn btn-primary" href="booking.html">Book a service</a>
+    </div>
+  </div>
+</section>

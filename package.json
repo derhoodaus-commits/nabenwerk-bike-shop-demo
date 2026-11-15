@@ -1,0 +1,22 @@
+{
+  "name": "nabenwerk-business-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Demo project: website for a fictional bike repair shop with online booking",
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "build": "node build.mjs",
+    "build:pages": "node build.mjs --pages",
+    "start": "node build.mjs && node server.mjs",
+    "serve": "node server.mjs",
+    "test": "node build.mjs && node --test \"tests/**/*.test.mjs\"",
+    "test:e2e": "python tests/e2e.py",
+    "test:e2e:pages": "python tests/e2e_pages.py"
+  },
+  "devDependencies": {
+    "@fontsource-variable/archivo": "^5.3.0",
+    "@fontsource/ibm-plex-mono": "^5.3.0"
+  },
+  "license": "UNLICENSED"
+}

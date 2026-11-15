@@ -1,0 +1,78 @@
+<!--meta {
+  "title": "Contact and Directions | Nabenwerk Radservice",
+  "description": "How to reach Nabenwerk Radservice on Weserstraße, Berlin-Neukölln: opening hours, phone, email and contact form.",
+  "nav": "contact",
+  "priority": 0.8,
+  "scripts": ["forms.js"]
+} -->
+<section class="page-hero">
+  <div class="wrap">
+    <p class="kicker">Contact</p>
+    <h1>Contact and directions</h1>
+    <p class="lead">The fastest way to get an appointment is to <a href="booking.html">book online</a>. For everything else, reach us by phone, email or the form below.</p>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="contact-ways">
+  <div class="wrap contact-grid">
+    <div class="contact-info">
+      <h2 id="contact-ways" class="section-title">How to reach us</h2>
+      <dl class="info-list">
+        <div><dt>Address</dt><dd>Weserstraße, Berlin-Neukölln<br>Entrance through the courtyard</dd></div>
+        <div><dt>Phone</dt><dd><a href="tel:+493023125417">030 23125 417</a></dd></div>
+        <div><dt>Email</dt><dd><a href="mailto:werkstatt@nabenwerk.example">werkstatt@nabenwerk.example</a></dd></div>
+        <div><dt>Getting here</dt><dd>Take the U7 to Rathaus Neukölln, then walk about 8 minutes. Bike parking in the courtyard.</dd></div>
+      </dl>
+      <h3>Opening hours</h3>
+      <dl class="hours light">
+        <div><dt>Monday to Friday</dt><dd>9 am–6 pm</dd></div>
+        <div><dt>Saturday</dt><dd>10 am–2 pm</dd></div>
+        <div><dt>Sundays and holidays</dt><dd>closed</dd></div>
+      </dl>
+    </div>
+
+    <div class="form-card">
+      <h2 class="section-title small">Send us a message</h2>
+      <form id="contact-form" class="form" action="api/contact" method="post" novalidate>
+        <div class="error-summary" tabindex="-1" role="alert" hidden>
+          <p>Please check the following:</p>
+          <ul></ul>
+        </div>
+        <div class="field">
+          <label for="c-name">Name</label>
+          <input id="c-name" name="name" type="text" autocomplete="name" required aria-describedby="c-name-error">
+          <p class="field-error" id="c-name-error" data-error-for="name"></p>
+        </div>
+        <div class="field">
+          <label for="c-email">Email</label>
+          <input id="c-email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="c-email-error">
+          <p class="field-error" id="c-email-error" data-error-for="email"></p>
+        </div>
+        <div class="field">
+          <label for="c-message">Your message</label>
+          <textarea id="c-message" name="message" rows="5" required maxlength="2000" aria-describedby="c-message-error"></textarea>
+          <p class="field-error" id="c-message-error" data-error-for="message"></p>
+        </div>
+        <div class="field hp" aria-hidden="true">
+          <label for="c-website">Website (leave blank)</label>
+          <input id="c-website" name="website" type="text" tabindex="-1" autocomplete="off">
+        </div>
+        <div class="field checkbox">
+          <input id="c-privacy" name="privacy" type="checkbox" required aria-describedby="c-privacy-error">
+          <label for="c-privacy">I have read the <a href="privacy.html">privacy policy</a>. My details will only be stored to handle my request.</label>
+          <p class="field-error" id="c-privacy-error" data-error-for="privacy"></p>
+        </div>
+        <!--static--><p class="demo-note"><strong>Demo:</strong> this form only checks your entries in your browser. Nothing is sent or stored.</p>
+        <noscript><p class="demo-note">This demo form needs JavaScript. It never sends any data.</p></noscript><!--/static-->
+        <button class="btn btn-primary btn-lg" type="submit">Send message</button>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
+      <div id="contact-done" class="done-box" tabindex="-1" hidden>
+        <!--server--><h3>Thanks, we’ve got your message.</h3>
+        <p>We’ll reply by email within one business day.</p><!--/server-->
+        <!--static--><h3>Thanks, your message looks good.</h3>
+        <p><strong>Demo project: nothing was sent.</strong> This is a portfolio demo of a fictional shop, so your message was only checked in your browser and not sent or stored anywhere.</p><!--/static-->
+      </div>
+    </div>
+  </div>
+</section>
